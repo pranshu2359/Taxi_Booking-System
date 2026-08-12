@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Booking Details</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f6f8;
+    }
+
+    .table-container {
+        width: 95%;
+        margin: 30px auto;
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.10);
+        overflow-x: auto;
+    }
+
+    .table-title {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 28px;
+    }
+
+    .booking-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 1100px;
+    }
+
+    .booking-table th {
+        background-color: #2c3e50;
+        color: #ffffff;
+        padding: 14px 12px;
+        border: 1px solid #ddd;
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .booking-table td {
+        padding: 13px 12px;
+        border: 1px solid #ddd;
+        text-align: center;
+        color: #444;
+        font-size: 14px;
+    }
+
+    .booking-table tbody tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+
+    .booking-table tbody tr:hover {
+        background-color: #eaf2f8;
+    }
+
+    .comfort {
+        padding: 6px 12px;
+        border-radius: 15px;
+        font-weight: bold;
+        display: inline-block;
+    }
+
+    .cheap {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    .standard {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+
+    .lux {
+        background-color: #d6d8f5;
+        color: #383d8f;
+    }
+
+    .message {
+        max-width: 250px;
+        text-align: left !important;
+        word-wrap: break-word;
+    }
+
+    @media (max-width: 768px) {
+        body {
+            padding: 10px;
+        }
+
+        .table-container {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .table-title {
+            font-size: 22px;
+        }
+    }
+</style>
+
+
+</head>
+
+<body>
+
+
+<div class="table-container">
+
+    <h2 class="table-title">Booking Details</h2>
+    <a href="dashboard">ADMIN HOME</a><br>
+    <h2 th:text =${message}>
+    </h2>
+
+    <table class="booking-table">
+
+        <!-- Table Header -->
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Source</th>
+                <th>Email</th>
+                <th>Destination</th>
+                <th>Time</th>
+                <th>Date</th>
+                <th>Comfort</th>
+                <th>Adults</th>
+                <th>Children</th>
+                <th>Message</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <!-- Database Values -->
+        <tbody>
+
+            <tr th:each="booking : ${allBookings}" >
+                <td th:text="${booking.id}"></td>
+                <td th:text="${booking.name}"></td>
+                <td th:text="${booking.source}"></td>
+                <td th:text="${booking.email}"></td>
+              
+                <td th:text="${booking.destination}"></td>
+                <td th:text="${booking.time}"></td>
+                <td th:text="${booking.date}"></td>
+                <td th:text="${booking.comfort}"></td>
+                <td class ="center" th:text="${booking.adult}">2</td>
+                <td class= "center" th:text="${booking.children}">1</td>
+                <td th:text="${booking.message}"></td>
+                <td> <a th:href="@{/admin/deleteBooking/{id} (id=${booking.id})}">Delete</a> 
+                 </td>
+
+                
+            </tr>
+
+         
+
+   
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+</body>
+</html>
