@@ -83,11 +83,7 @@
     
     <scope>compile</scope>
 </dependency>
-		<dependency>
-			<groupId>com.code</groupId>
-			<artifactId>myproject</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+	
 	</dependencies>
 
 	<build>
